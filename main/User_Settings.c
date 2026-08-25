@@ -11,5 +11,6 @@ const lora_radio_config_t g_lora_radio = {
 };
 
 const bool g_display_enabled = true; // Enable or disable the OLED display functionality
+
 const uint32_t g_lora_tx_interval_ms = 2000; // Interval between transmissions in milliseconds
 const uint32_t g_lora_tx_timeout_ms = 5000; // Timeout for waiting for TX completion in milliseconds
