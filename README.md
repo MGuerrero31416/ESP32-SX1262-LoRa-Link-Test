@@ -23,6 +23,12 @@ Heltec V4 board A          SX1262 link          Heltec V4 board B
       |-- config + GPIO + FEM control         |
 ```
 
+## Hardware in action
+
+The two Heltec WiFi LoRa 32 V4 boards running the link test:
+
+![Two Heltec WiFi LoRa 32 V4 boards in action](docs/images/LoRa32_V4_test.jpg)
+
 ## Source Layout
 
 The project is structured to follow the same separation pattern used in the BACnet master project so it can later be integrated into a larger ESP32 application cleanly.
