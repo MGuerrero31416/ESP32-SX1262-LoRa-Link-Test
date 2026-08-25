@@ -15,3 +15,9 @@
 #define LORA_PA_POWER GPIO_NUM_7
 #define LORA_PA_EN GPIO_NUM_2
 #define LORA_PA_TX_EN GPIO_NUM_46
+
+// Heltec WiFi LoRa 32 V4 onboard OLED wiring.
+#define OLED_SDA GPIO_NUM_17
+#define OLED_SCL GPIO_NUM_18
+#define OLED_RESET GPIO_NUM_21
+#define OLED_VEXT GPIO_NUM_36
