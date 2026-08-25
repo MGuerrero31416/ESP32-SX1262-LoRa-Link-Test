@@ -1,0 +1,9 @@
+idf_component_register(SRCS "main.c"
+                            "User_Settings.c"
+                            "platform/lora_hal.c"
+                            "platform/sx1262.c"
+                            "app/lora_link.c"
+                            "app/lora_tx_task.c"
+                            "app/lora_rx_task.c"
+                    INCLUDE_DIRS "." "platform" "app"
+                    REQUIRES esp_driver_gpio esp_driver_spi)

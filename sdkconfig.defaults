@@ -1,0 +1,4 @@
+# Default ESP-IDF configuration for the LoRa point-to-point test.
+CONFIG_IDF_TARGET="esp32s3"
+CONFIG_LORA_ROLE_TRANSMITTER=y
+CONFIG_LORA_PA_GC1109=y

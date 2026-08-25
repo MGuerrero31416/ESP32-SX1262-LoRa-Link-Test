@@ -1,0 +1,18 @@
+menu "LoRa test configuration"
+
+choice LORA_ROLE
+    prompt "Firmware role"
+    default LORA_ROLE_TRANSMITTER
+
+    config LORA_ROLE_TRANSMITTER
+        bool "Transmitter"
+
+    config LORA_ROLE_RECEIVER
+        bool "Receiver"
+endchoice
+
+config LORA_PA_GC1109
+    bool
+    default y
+
+endmenu
