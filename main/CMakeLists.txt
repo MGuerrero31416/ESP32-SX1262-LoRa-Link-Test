@@ -7,4 +7,4 @@ idf_component_register(SRCS "main.c"
                             "app/lora_tx_task.c"
                             "app/lora_rx_task.c"
                     INCLUDE_DIRS "." "platform" "app"
-                    REQUIRES esp_driver_gpio esp_driver_i2c esp_driver_spi)
+                    REQUIRES esp_driver_gpio esp_driver_i2c esp_driver_spi u8g2)

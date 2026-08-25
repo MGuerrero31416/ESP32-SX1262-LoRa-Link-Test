@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdbool.h>
 #include <stdint.h>
 
 #define LORA_PACKET_MAX_LEN 32
@@ -15,5 +16,6 @@ typedef struct {
 } lora_radio_config_t;
 
 extern const lora_radio_config_t g_lora_radio;
+extern const bool g_display_enabled;
 extern const uint32_t g_lora_tx_interval_ms;
 extern const uint32_t g_lora_tx_timeout_ms;

@@ -12,7 +12,13 @@
 
 void app_main(void)
 {
-	ESP_ERROR_CHECK(display_init());
+	if (g_display_enabled) {
+#if CONFIG_LORA_ROLE_TRANSMITTER
+		ESP_ERROR_CHECK(display_init("TRANSMITTER"));
+#else
+		ESP_ERROR_CHECK(display_init("RECEIVER"));
+#endif
+	}
 	ESP_ERROR_CHECK(lora_link_init());
 #if CONFIG_LORA_ROLE_TRANSMITTER
 	ESP_LOGI(TAG, "TRANSMITTER: %" PRIu32 " Hz BW125 SF%u CR4/5 CRC on",

@@ -23,7 +23,9 @@ void lora_tx_task_run(void *argument)
 		memcpy(&packet[4], &uptime, sizeof(uptime));
 		if (lora_link_send(packet, sizeof(packet)) == ESP_OK) {
 			ESP_LOGI(TAG, "TRANSMIT seq=%" PRIu32 " uptime=%" PRIu32 "s", sequence, uptime);
-			ESP_ERROR_CHECK(display_show_tx(sequence));
+			if (g_display_enabled) {
+				ESP_ERROR_CHECK(display_show_tx(sequence));
+			}
 		} else {
 			ESP_LOGE(TAG, "TRANSMIT failed seq=%" PRIu32, sequence);
 		}

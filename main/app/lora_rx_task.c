@@ -39,6 +39,8 @@ void lora_rx_task_run(void *argument)
 		received_any = true;
 		ESP_LOGI(TAG, "RECEIVE seq=%" PRIu32 " uptime=%" PRIu32 "s RSSI=%d dBm SNR=%d dB",
 				 sequence, uptime, frame.rssi_dbm, frame.snr_db);
-		ESP_ERROR_CHECK(display_show_rx(sequence));
+		if (g_display_enabled) {
+			ESP_ERROR_CHECK(display_show_rx(sequence));
+		}
 	}
 }

@@ -6,6 +6,7 @@ A modular ESP-IDF project for testing a point-to-point SX1262 radio link between
 
 - ESP32-S3 target with SX1262 radio support
 - Verified Heltec WiFi LoRa 32 V4 GPIO wiring and GC1109 FEM control
+- Optional onboard SSD1306 OLED status display
 - TX/RX role switching via menuconfig
 - Packet sequence tracking, uptime reporting, RSSI, and SNR logging
 - Modular layout for easier integration into larger applications
@@ -57,6 +58,7 @@ main/
 - `platform/board_pins.h` — board-level GPIO mapping for the Heltec V4 radio and FEM.
 - `platform/lora_hal.c` and `platform/lora_hal.h` — SPI bus setup, GPIO control, DIO1 ISR, BUSY waits, and front-end switching.
 - `platform/sx1262.c` and `platform/sx1262.h` — SX1262 register operations, IRQ handling, and packet-level transfer primitives.
+- `platform/display.c` and `platform/display.h` — optional onboard OLED initialization and TX/RX status updates.
 - `app/lora_link.c` and `app/lora_link.h` — link initialization and high-level transmit/receive API.
 - `app/lora_tx_task.c` and `app/lora_tx_task.h` — transmitter role task, sequence numbers, and periodic send timing.
 - `app/lora_rx_task.c` and `app/lora_rx_task.h` — receiver role task, RSSI/SNR logging, and packet-loss detection.
@@ -73,6 +75,7 @@ These files contain:
 - packet and preamble settings;
 - TX power and timeout configuration;
 - transmit periodic timing and role-specific defaults.
+- onboard OLED display enable state.
 
 Relevant parameters include:
 
@@ -85,6 +88,9 @@ Relevant parameters include:
 - `packet_max_len` = 32
 - `g_lora_tx_interval_ms` = 2000
 - `g_lora_tx_timeout_ms` = 5000
+- `g_display_enabled` = `true`
+
+Set `g_display_enabled` to `false` in `main/User_Settings.c` to run without the onboard OLED. When disabled, the firmware skips OLED GPIO/I2C initialization and all TX/RX display updates; radio operation and logging continue normally.
 
 ## Build
 
@@ -107,6 +113,8 @@ The configuration exposes the following role options:
 
 - `LORA_ROLE_TRANSMITTER`
 - `LORA_ROLE_RECEIVER`
+
+The OLED is controlled independently in `main/User_Settings.c` with `g_display_enabled`, so it can be disabled without changing the transmitter/receiver role or radio configuration.
 
 Build one board as the transmitter and the other as the receiver. The transmitter sends a 12-byte binary packet containing a 32-bit sequence number and a 32-bit uptime counter every 2 seconds. The receiver logs the incoming sequence, uptime, RSSI, SNR, and missing packet numbers.
 
