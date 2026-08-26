@@ -3,4 +3,4 @@
 cmake_minimum_required(VERSION 3.22)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(LoRa-Test1)
+project(ESP32-SX1262-LoRa-Link-Test)
