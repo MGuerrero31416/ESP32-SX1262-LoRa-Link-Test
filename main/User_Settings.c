@@ -1,12 +1,12 @@
 #include "User_Settings.h"
 
 const lora_radio_config_t g_lora_radio = {
-	.frequency_hz = 923000000UL, // 923 MHz
+	.frequency_hz = 923000000UL, // Heltec WiFi LoRa 32 V4 / GC1109 band
 	.bandwidth = 0x04, // 125 kHz
-	.spreading_factor = 7, // SF7
+	.spreading_factor = 10, // Robust indoor starting point; use SF11 if the link is marginal
 	.coding_rate = 0x01, // 4/5
-	.preamble_length = 8, // 8 symbols
-	.tx_power_dbm = 10, // 10 dBm
+	.preamble_length = 12, // Extra acquisition margin in indoor multipath
+	.tx_power_dbm = 22, // Board PA setting
 	.packet_max_len = LORA_PACKET_MAX_LEN, // Maximum packet length
 };
 
