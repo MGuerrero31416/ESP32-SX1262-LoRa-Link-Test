@@ -1,4 +1,4 @@
-# ESP32 SX1262 LoRa Link Test
+# ESP-IDF ESP32 SX1262 LoRa Link Test
 
 A modular ESP-IDF project for testing a point-to-point SX1262 radio link between two Heltec WiFi LoRa 32 V4 boards. The firmware is designed around a clean `platform/` + `app/` architecture so it can later be integrated into a larger BACnet or industrial ESP32 system without rewriting the radio layer.
 
